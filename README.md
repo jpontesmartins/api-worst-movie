@@ -1,6 +1,14 @@
 api-worst-movie
 ===
 
+## Melhorias
+
+- Existem alguns pontos que podem ser refatorados para uma melhor leitura do código.
+- TODO: trazer a listagem de intervalos caso haja mais de um, hoje traz apenas um de cada.
+
+## Banco de dados
+ - Optei por usar o sqlite3
+
 ## Clonar projeto
 
 ```|
