@@ -8,7 +8,6 @@ export class AssetService {
         const movies = [];
         const items = moviesRaw.buffer.toString().split("\n")
 
-        // criacao da de movies a partir do CSV
         items.map(item => {
             const registro = item.split(";");
             if (registro[0] === "year") {

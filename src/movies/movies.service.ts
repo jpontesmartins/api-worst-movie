@@ -69,9 +69,6 @@ export class MoviesService {
                 maiorIntervalo
             ]
         }
-
-        console.log(resultado);
-        
         return resultado;
 
     }
