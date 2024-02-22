@@ -35,19 +35,12 @@ export class MoviesService {
         };
 
         for (let producer of allProducers) {
-            // console.log(allProducers);
-            // console.log(`--> producer: ${producer}`)
-            // console.log(producer)
             const moviesByProducer = await this.moviesByProducer(producer);
             const totalDeFilmes = moviesByProducer.length;
-            // console.log(`${producer}: ${totalDeFilmes}`);   
-            // console.log(`totalDeFilmes < 2: ${totalDeFilmes} < 2`);
             if (!(totalDeFilmes < 2)) {
                 const intervalo = moviesByProducer[totalDeFilmes - 1].year - moviesByProducer[totalDeFilmes - 2].year;
 
                 if (intervalo > maiorIntervalo.interval) {
-                    // console.log("intervalo > maiorIntervalo.interval");
-                    // console.log(`${intervalo} > ${maiorIntervalo.interval}`);
                     maiorIntervalo = {
                         producer: producer,
                         interval: intervalo,
@@ -57,8 +50,6 @@ export class MoviesService {
                 }
 
                 if (intervalo < menorIntervalo.interval) {
-                    // console.log("intervalo < menorIntervalo.interval");
-                    // console.log(`${intervalo} < ${menorIntervalo.interval}`);
                     menorIntervalo = {
                         producer: producer,
                         interval: intervalo,
@@ -70,10 +61,6 @@ export class MoviesService {
             }
         };
 
-        console.log("Novos intervalos: ");
-        console.log(maiorIntervalo);
-        console.log(menorIntervalo);
-        
         const resultado = {
             min: [
                 menorIntervalo,
@@ -82,6 +69,8 @@ export class MoviesService {
                 maiorIntervalo
             ]
         }
+
+        console.log(resultado);
         
         return resultado;
 
