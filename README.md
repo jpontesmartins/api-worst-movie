@@ -39,6 +39,10 @@ curl --location 'http://localhost:3000/asset/upload' \
 
 ```
 
+## Executar testes
+```
+$ npm run test
+```
 
 
 
