@@ -8,11 +8,8 @@ export class MoviesController {
     @Get()
     async intervals() {
         const allWinners = await this.moviesService.winnersWorstMovie();
-        // console.log(allWinners);
         const allProducers = this.getAllProducers(allWinners, []);
-        // console.log(allProducers);
         const resultado = await this.moviesService.getIntervals(allProducers);
-        // console.log(resultado);
         return resultado;
 
     }

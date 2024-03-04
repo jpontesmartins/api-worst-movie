@@ -6,7 +6,7 @@ export class AssetService {
 
     create(moviesRaw: any) {
         const movies = [];
-        const items = moviesRaw.buffer.toString().split("\n")
+        const items = moviesRaw.toString().split("\n");
 
         items.map(item => {
             const registro = item.split(";");
@@ -38,21 +38,22 @@ export class AssetService {
 
         // novos dados da base
         movies.map(movie => {
-            db.serialize(function () {
-                db.run(
-                    `INSERT INTO movie VALUES (?, ?, ?, ?, ?, ?)`,
-                    [null, movie.year, movie.title, movie.studios, movie.producers, movie.winner],
-                    function (error) {
-                        if (error) {
-                            return console.log(error.message);
+            if (movie.year !== 0) {
+                db.serialize(() => {
+                    db.run(
+                        `INSERT INTO movie VALUES (?, ?, ?, ?, ?, ?)`,
+                        [null, movie.year, movie.title, movie.studios, movie.producers, movie.winner],
+                        function (error) {
+                            if (error) {
+                                return console.log(error.message);
+                            }
+                            console.log(`Inserted movie with the id: ${this.lastID}`);
                         }
-                        console.log(`Inserted movie with the id: ${this.lastID}`);
-                    }
-                );
-            });
-            console.log(movie);
+                    );
+                });
+                console.log(movie);
+            }
         });
-
 
     }
 }
