@@ -9,6 +9,6 @@ export class AssetController {
     @Post('upload')
     @UseInterceptors(FileInterceptor('file'))
     async uploadFile(@UploadedFile() file: Express.Multer.File) {
-        this.assetService.create(file);
+        this.assetService.create(file.buffer);
     }
 }
